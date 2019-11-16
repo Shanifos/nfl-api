@@ -8,16 +8,17 @@ app.get("/teams", (request, response) => {
 })
 
 app.get("/teams/:input", (request, response) => {
-  const teamByParams = teams.filter(team => {
     const requestInfo = request.params.input
+  const teamByParams = teams.filter(team => {
     return (
       team.id === Number(requestInfo) ||
       team.abbreviation === requestInfo.toUpperCase()
     )
   })
-  teamByParams.length ? response.send(teamByParams) : response.sendStatus(404)
+ return teamByParams.length ? response.send(teamByParams) : response.sendStatus(404)
 })
 
 const server = app.listen(1377, () => {
   console.log("Listening to 1377")
 })
+module.exports = server
