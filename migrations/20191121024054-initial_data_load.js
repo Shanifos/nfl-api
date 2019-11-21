@@ -270,7 +270,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return await queryInterface.dropTable('teams')
+    return await queryInterface.bulkDelete('teams')
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
